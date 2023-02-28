@@ -1,0 +1,24 @@
+timestamp,name,payment_option,amount
+2023-02-10 11:21:11,Adil Farooq,cash,200
+2023-02-10 11:21:14,Adil Farooq,cash,200
+2023-02-10 11:21:15,Adil Farooq,cash,200
+2023-02-10 11:21:17,Adil Farooq,cash,200
+2023-02-10 11:21:28,Adeeb Farooq,cash,200
+2023-02-10 11:21:30,Adeeb Farooq,cash,200
+2023-02-10 11:21:31,Adeeb Farooq,cash,200
+2023-02-10 11:21:33,Adeeb Farooq,cash,200
+2023-02-10 11:21:34,Adeeb Farooq,cash,200
+2023-02-10 11:21:38,Adeeb Farooq,cash,200
+2023-02-10 11:21:39,Adeeb Farooq,cash,200
+2023-02-10 11:21:40,Adeeb Farooq,cash,200
+2023-02-10 11:21:41,Adeeb Farooq,cash,200
+2023-02-10 11:21:45,Adeeb Farooq,cash,200
+2023-02-10 11:22:03,Farooq,credit_card,500
+2023-02-10 11:22:05,Farooq,credit_card,500
+2023-02-10 11:22:06,Farooq,credit_card,500
+2023-02-10 11:22:10,Farooq,debit_card,500
+2023-02-10 11:22:13,Farooq,debit_card,500
+2023-02-12 11:54:21,Afia,credit_card,200
+2023-02-17 11:13:31,Farooq,credit_card,200
+2023-02-17 12:47:52,srivatsan,debit_card,500
+2023-02-17 12:47:53,srivatsan,debit_card,500

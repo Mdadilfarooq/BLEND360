@@ -1,0 +1,5 @@
+matplotlib
+sqlalchemy
+pandas
+IPython
+minio
