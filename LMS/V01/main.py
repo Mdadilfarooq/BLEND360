@@ -5,7 +5,6 @@ import pandas as pd
 from PIL import Image
 import dash_auth
 import csv
-from flask import request
 
 VALID_USERNAME_PASSWORD_PAIRS = {}
 

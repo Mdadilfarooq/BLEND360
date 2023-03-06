@@ -174,3 +174,5 @@ cython_debug/
 
 # Additional
 airflow_docker/logs/
+connectors/data
+connectors/assets
