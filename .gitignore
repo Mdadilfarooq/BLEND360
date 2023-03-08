@@ -173,6 +173,7 @@ cython_debug/
 #.idea/
 
 # Additional
-airflow_docker/logs/
+airflow_docker/logs
+airflow_docker/config
 connectors/data
 connectors/assets
