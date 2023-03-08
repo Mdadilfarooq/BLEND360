@@ -117,23 +117,13 @@ def get_video_data(video_id, youtube):
     
     try:
         with open(f'C:\\Users\\AdilFarooq\\OneDrive - Blend 360\\Desktop\\BLEND360\\connectors\\data\\{video_id}(comments).json', 'w') as f:
-            f.write('[')
-            for i, comment in enumerate(comments_json):
-                json.dump(comment, f)
-                if i != len(comments_json) - 1:
-                    f.write(',\n')
-            f.write(']')
+            json.dump(comments_json, f)
     except IOError as e:
         return f'Error writing to file: {e}', 'danger'
     
     try:
         with open(f'C:\\Users\\AdilFarooq\\OneDrive - Blend 360\\Desktop\\BLEND360\\connectors\\data\\{video_id}(replies).json', 'w') as f:
-            f.write('[')
-            for i, reply in enumerate(replies_json):
-                json.dump(reply, f)
-                if i != len(replies_json) - 1:
-                    f.write(',\n')
-            f.write(']')
+            json.dump(replies_json, f)
     except IOError as e:
         return f'Error writing to file: {e}', 'danger'
     

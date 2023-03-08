@@ -34,7 +34,7 @@ default_args = {
     'owner': 'Mdadilfarooq',
     "email_on_failure":True,
     "email_on_retry":True,
-    "email":["adilfarooq0138@gmail.com"],
+    "email":[""],
     'retries': 5,
     'retry_delay': timedelta(minutes=5)
 }

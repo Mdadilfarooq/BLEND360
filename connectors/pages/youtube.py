@@ -31,6 +31,16 @@ layout = html.Div([
             dbc.Col(dbc.Button('RETRIEVE COMMENTS', id='get_comments', color='info', n_clicks=None, disabled = False, style={'display': 'inline-block', 'width':'100%'}), width = 2)
         ], class_name='mt-3')
     ], id='video-container', hidden=True),
+    html.Div([
+        html.Hr(),
+        dbc.Row([
+            dbc.Col(html.H1('ANALYTICS', className='text-center text-info', style={'font-weight': 'bold'}))
+        ]),
+        dbc.Row([
+            dbc.Col(dcc.Dropdown(id="videos-plot", style={'border-width': '2px', 'border-color': 'black'}))
+        ], class_name='mt-3'),
+        html.Div(id='graph-container', style={'display': 'flex', 'justifyContent': 'center'}, className='mt-3')
+    ], id='analytics-container', hidden=True),
     dbc.Toast(
         id="popup-channel",
         header="BLEND360 | SMC",
@@ -71,16 +81,48 @@ def get_videos(trigger, channel_id):
     Output('popup-video', 'children'),
     Output('popup-video', 'icon'),
     Output('popup-video', 'is_open'),
+    Output('analytics-container', 'hidden'),
+    Output('videos-plot', 'options'),
+    Output('videos-plot', 'value'),
     Input('get_comments', 'n_clicks'),
     State('videos', 'value'),
     prevent_initial_call = True
 )
 def get_comments(trigger, selected_videos):
     if not selected_videos:
-        return 'PLEASE SELECT VIDEOS', 'warning', True
+        return 'PLEASE SELECT VIDEOS', 'warning', True, True, [], None
     else:
         for video_id in selected_videos:
             data = get_video_data(video_id, youtube)
             if data[1] == 'danger' or data[1] == 'warning':
-                return data[0], data[1], True  
-        return 'RETRIVED SUCCESSFULLY', 'success', True
+                return data[0], data[1], True, True, [], None
+        return 'RETRIVED SUCCESSFULLY', 'success', True, False, selected_videos, selected_videos[0]
+    
+@callback(
+    Output('graph-container', 'children'),
+    Input('videos-plot', 'value'),
+    prevent_initial_call = True
+)
+def plot(video_id):
+    df = pd.read_csv(f'data/{video_id}.csv')
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    df['day'] = df['timestamp'].dt.date
+    counts = df['day'].value_counts().sort_index()
+    return dcc.Graph(
+        figure={
+            'data': [{
+                'x': counts.index,
+                'y': counts.values,
+                'type': 'line',
+                'name': 'NUMBER OF TIMESTAMPS'
+            }],
+            'layout': {
+                'title': 'NUMBER OF TIMESTAMPS PER DAY',
+                'xaxis': {'title': 'DATE'},
+                'yaxis': {'title': 'COUNT'}
+            }
+        }
+    )
+
+
+

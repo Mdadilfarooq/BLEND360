@@ -15,7 +15,7 @@ default_args = {
     'owner': 'Mdadilfarooq',
     "email_on_failure":True,
     "email_on_retry":True,
-    "email":["adilfarooq0138@gmail.com"],
+    "email":[""],
     'retries': 5,
     'retry_delay': timedelta(minutes=5)
 }
@@ -102,7 +102,7 @@ with DAG(
     )
     notify = EmailOperator(
         task_id='notify',
-        to="adilfarooq0138@gmail.com",
+        to="",
         subject="Your montly plots are ready",
         html_content="""
             <h1>Wohoo Done</h1>
